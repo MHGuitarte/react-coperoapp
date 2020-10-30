@@ -22,6 +22,20 @@
   border-bottom-right-radius: 20px;
   border: 0;
   box-shadow: 6px 6px 6px 6px #f1f1f1;
+  padding: 0 2rem;
+}
+
+#taskButton:hover {
+  cursor: pointer;
+  background-color: rgb(241, 241, 241, 0.4);
+}
+
+#taskButton:active {
+  box-shadow: inset 6px 6px 6px 6px #f1f1f1;
+}
+
+.errorText {
+  color: red;
 }
 
 .todoList {

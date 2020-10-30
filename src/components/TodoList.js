@@ -5,13 +5,20 @@ import TodoInput from "./TodoInput";
 const TodoList = () => {
   const [taskCounter, setTaskCounter] = useState(0);
   const [todos, setTodos] = useState([]);
+  const [taskError, setTaskError] = useState(false);
 
   //La primera vez que se pulsa el botón de añadir, no añade nada
   const addTodo = (taskText) => {
-    setTodos([...todos, { id: taskCounter, text: taskText, done: false }]);
-    console.log(todos);
+    if (taskText !== "") {
+      setTaskError(false);
 
-    setTaskCounter(taskCounter + 1);
+      setTodos([...todos, { id: taskCounter, text: taskText, done: false }]);
+      setTaskCounter(taskCounter + 1);
+
+      console.log(todos);
+    } else {
+      setTaskError(true);
+    }
   };
 
   const handleDoneTask = (id) => {
@@ -22,7 +29,7 @@ const TodoList = () => {
     <div className="todoContainer">
       <h1>Cope's TODO App</h1>
       <TodoInput onAdd={addTodo} />
-
+      {taskError && <small className="errorText">Introduce una tarea</small>}
       <ol className="todoList">
         {todos.map(({ id, text, done }) => {
           return (
