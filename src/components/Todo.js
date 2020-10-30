@@ -1,18 +1,11 @@
 import React, { useState } from "react";
 
-const Todo = () => {
-  const [{ id, task, done }, setTodo] = useState({
-    id: "",
-    task: "",
-    done: false,
-  });
+const Todo = ({ id, text, done, onDone }) => {
+  const [taskDone, setDone] = useState(done);
 
-  function changeTask() {
-    setTodo({
-      id: id,
-      task: task,
-      done: !done,
-    });
+  const handleTaskDone = () => {
+    setDone(!taskDone);
+    onDone(taskDone);
   }
 
   return (
@@ -21,12 +14,12 @@ const Todo = () => {
       style={{
         display: "flex",
         flexFlow: "row",
-        textDecoration: done ? "line-through" : 0,
+        textDecoration: taskDone ? "line-through" : 0,
       }}
       id={id}
     >
-      <h3>{task}</h3>
-      <input type="checkbox" onChange={changeTask} />
+      <h3 style={{ display: "inline" }}>{text}</h3>
+      <input type="checkbox" onChange={handleTaskDone} />
     </div>
   );
 };
