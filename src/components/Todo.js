@@ -1,26 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Todo = ({ id, text, done, onDone }) => {
-  const [taskDone, setDone] = useState(done);
-
+const Todo = ({ id, text, onDone }) => {
   const handleTaskDone = () => {
-    setDone(!taskDone);
-    onDone(taskDone);
-  }
+    onDone(id);
+  };
 
   return (
-    <div
-      class="todo"
-      style={{
-        display: "flex",
-        flexFlow: "row",
-        textDecoration: taskDone ? "line-through" : 0,
-      }}
-      id={id}
-    >
-      <h3 style={{ display: "inline" }}>{text}</h3>
-      <input type="checkbox" onChange={handleTaskDone} />
-    </div>
+    <li className="task" id={id}>
+      <label for={id} className="taskTitle">{text}</label>
+      <span className="taskDoneInput" id={id} onClick={handleTaskDone} />
+    </li>
   );
 };
 

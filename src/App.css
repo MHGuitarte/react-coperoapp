@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.todoContainer {
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+}
+
+#taskInput {
+  line-height: 2.4rem;
+  width: 24rem;
+  border: 0;
+  box-shadow: 6px 6px 6px 6px #f1f1f1;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding-left: 1rem;
+}
+
+#taskButton {
+  height: 2.4rem;
+  background-color: white;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border: 0;
+  box-shadow: 6px 6px 6px 6px #f1f1f1;
+}
+
+.todoList {
+  margin-top: 3rem;
+  padding: 0;
+  width: 24rem;
+}
+
+.task {
+  display: grid;
+  grid-template-columns: 80% 20%;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border: 2px solid;
+  border-radius: 18px;
+  width: 100%;
+  margin: 1rem auto;
 }
 
-.App-link {
-  color: #61dafb;
+.taskTitle {
+  font-size: large;
+  font-weight: bold;
+  padding-left: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.taskDoneInput::before {
+  content: "\2713";
+  font-size: 2rem;
+  color: green;
+  font-weight: bold;
+  margin-left: 1rem;
+  line-height: 2rem;
+}
+
+.taskDoneInput:hover {
+  cursor: pointer;
+  text-shadow: 6px 6px 6px green;
 }

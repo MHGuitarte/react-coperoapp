@@ -9,14 +9,13 @@ const TodoInput = ({ onAdd }) => {
   };
 
   const enterAddTask = (e) => {
-    console.log(e.code);
     if (e.code === "Enter") {
       handleAddTask();
     }
   };
 
   return (
-    <div>
+    <div className="todoInputContainer">
       <input
         type="text"
         name="taskInput"
@@ -25,7 +24,7 @@ const TodoInput = ({ onAdd }) => {
         onChange={(e) => setTaskInput(e.target.value)}
         onKeyPress={(e) => enterAddTask(e)}
       />
-      <button onClick={handleAddTask}>Añadir</button>
+      <button id="taskButton" onClick={handleAddTask}>Añadir</button>
     </div>
   );
 };
